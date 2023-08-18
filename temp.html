@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scal=1.0" />
+        <title>Temperature Converter</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html,
+             body {
+                height: 100%;
+             }
+             body {
+                display: grid;
+                place-content: center;
+                background: rgb(233, 233, 235);
+             }
+             body h1{
+                color: aliceblue;
+                text-align: center;
+             }
+             main {
+                border-radius: 10px;
+                background-color:rgb(115, 104, 139);
+                box-shadow: 2px 2px 5px rgb(171, 207, 231);
+                padding: 2rem;
+             }
+            #form {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                align-items: center;
+            }
+            .Convert {
+                all: unset;
+                color: white;
+                border-radius: 3px;
+                background-color: rgb(12, 26, 68);
+                font-weight: 0.35rem 0.5rem;
+                cursor: pointer;
+            }
+            input,
+            select {
+                margin-block-end: 1rem;
+                font-size: 1.15rem;
+            }
+            label {
+                gap: 0.5rem;
+                display: flex;
+                flex-direction: column;
+            }
+            .result {
+                font-size: 1.1rem;
+                font-weight: bolder;
+            }
+        </style>
+     </head>
+     <body>
+        <div class="container">
+            <h2>Temperature Converter</h2>
+            <div class="converter-row">
+                <div class="col">
+                    <label>Fahrenheit</label>
+                    <input type="number" 
+                           id="fahrenheit">
+                </div>
+      
+                <div class="col">
+                    <label>Celsius</label>
+                    <input type="number" 
+                           id="celsius">
+                </div>
+      
+                <div class="col">
+                    <label>Kelvin</label>
+                    <input type="number" 
+                           id="kelvin">
+                </div>
+            </div>
+        </div>
+      
+        <script>
+            let celsius = 
+                document.getElementById('celsius');
+            let fahrenheit = 
+                document.getElementById('fahrenheit');
+            let kelvin = 
+                document.getElementById('kelvin');
+            celsius.oninput = function () {
+                let f = (parseFloat(celsius.value) * 9) / 5 + 32;
+                fahrenheit.value = parseFloat(f.toFixed(2));
+      
+                let k = (parseFloat(celsius.value) + 273.15);
+                kelvin.value = parseFloat(k.toFixed(2));
+            }
+            fahrenheit.oninput = function () {
+                let c = ((parseFloat(
+                    fahrenheit.value) - 32) * 5) / 9;
+                celsius.value = parseFloat(c.toFixed(2));
+      
+                let k = (parseFloat(
+                    fahrenheit.value) - 32) * 5 / 9 + 273.15;
+                kelvin.value = parseFloat(k.toFixed(2));
+            }
+            kelvin.oninput = function () {
+                let f = (parseFloat(
+                    kelvin.value) - 273.15) * 9 / 5 + 32;
+                fahrenheit.value = parseFloat(f.toFixed(2));
+      
+                let c = (parseFloat(kelvin.value) - 273.15);
+                celsius.value = parseFloat(c.toFixed(2));
+            }
+        </script>
+    </body>
+      
+    </html>
